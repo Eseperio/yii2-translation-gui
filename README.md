@@ -1,8 +1,10 @@
-# Yii2 - Translate Manager
+# Yii2 - Translation GUI
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
+WIP: We are currently working on developing this library. It is not ready for production use yet.
+
+This is a fork from yii2-translation-manager, which has not been updated since 2016.
+
 [![Software License][ico-license]](LICENSE.md)
-[![Total Downloads][ico-downloads]][link-downloads]
 
 Translation management extension for Yii 2
 
@@ -581,5 +583,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
 [ico-downloads]: https://img.shields.io/packagist/dt/lajax/yii2-translate-manager.svg?style=flat
 
-[link-packagist]: https://packagist.org/packages/lajax/yii2-translate-manager
-[link-downloads]: https://packagist.org/packages/lajax/yii2-translate-manager
