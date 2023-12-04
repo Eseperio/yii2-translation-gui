@@ -6,7 +6,7 @@
  * @since 1.0
  */
 
-namespace lajax\translatemanager\models;
+namespace eseperio\translatemanager\models;
 
 use Yii;
 
@@ -156,7 +156,7 @@ class Language extends \yii\db\ActiveRecord
      */
     public static function getStatusNames()
     {
-        return \lajax\translatemanager\helpers\Language::a(self::$_CONDITIONS);
+        return \eseperio\translatemanager\helpers\Language::a(self::$_CONDITIONS);
     }
 
     /**

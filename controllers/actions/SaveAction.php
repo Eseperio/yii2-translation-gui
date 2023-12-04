@@ -1,11 +1,11 @@
 <?php
 
-namespace lajax\translatemanager\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
 use Yii;
 use yii\web\Response;
-use lajax\translatemanager\services\Generator;
-use lajax\translatemanager\models\LanguageTranslate;
+use eseperio\translatemanager\services\Generator;
+use eseperio\translatemanager\models\LanguageTranslate;
 
 /**
  * Class for saving translations.

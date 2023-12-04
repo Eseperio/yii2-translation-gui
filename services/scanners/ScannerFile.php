@@ -1,12 +1,12 @@
 <?php
 
-namespace lajax\translatemanager\services\scanners;
+namespace eseperio\translatemanager\services\scanners;
 
 use Yii;
 use yii\helpers\Console;
 use yii\helpers\FileHelper;
 use yii\base\InvalidConfigException;
-use lajax\translatemanager\services\Scanner;
+use eseperio\translatemanager\services\Scanner;
 
 /**
  * Class for processing PHP and JavaScript files.
@@ -49,13 +49,13 @@ use lajax\translatemanager\services\Scanner;
  * Translation to site language:
  *
  * ~~~
- * $genders = \lajax\translatemanager\helpers\Language::a($this->_GENDERS);
+ * $genders = \eseperio\translatemanager\helpers\Language::a($this->_GENDERS);
  * ~~~
  *
  * Translating to the language of your coice:
  *
  * ~~~
- * $statuses = \lajax\translatemanager\helpers\Language::a($this->_STATUSES, [], 'de-DE');
+ * $statuses = \eseperio\translatemanager\helpers\Language::a($this->_STATUSES, [], 'de-DE');
  * ~~~
  *
  * @author Lajos Molnár <lajax.m@gmail.com>
@@ -75,7 +75,7 @@ abstract class ScannerFile extends \yii\console\controllers\MessageController
     public $scanner;
 
     /**
-     * @var \lajax\translatemanager\Module TranslateManager Module
+     * @var \eseperio\translatemanager\Module TranslateManager Module
      */
     public $module;
 

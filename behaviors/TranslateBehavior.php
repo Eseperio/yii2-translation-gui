@@ -1,13 +1,13 @@
 <?php
 
-namespace lajax\translatemanager\behaviors;
+namespace eseperio\translatemanager\behaviors;
 
 use Yii;
 use yii\db\BaseActiveRecord;
 use yii\behaviors\AttributeBehavior;
-use lajax\translatemanager\helpers\Language;
-use lajax\translatemanager\models\LanguageSource;
-use lajax\translatemanager\models\LanguageTranslate;
+use eseperio\translatemanager\helpers\Language;
+use eseperio\translatemanager\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageTranslate;
 
 /**
  * Behavior that translates the model attributes, and saves the changes into database.
@@ -28,7 +28,7 @@ use lajax\translatemanager\models\LanguageTranslate;
  *
  * ~~~
  * [
- *      'class' => lajax\translatemanager\behaviors\TranslateBehavior::className(),
+ *      'class' => eseperio\translatemanager\behaviors\TranslateBehavior::className(),
  *      'translateAttributes' => ['names of multilingual fields'],
  * ],
  * ~~~
@@ -37,7 +37,7 @@ use lajax\translatemanager\models\LanguageTranslate;
  *
  * ~~~
  * [
- *      'class' => lajax\translatemanager\behaviors\TranslateBehavior::className(),
+ *      'class' => eseperio\translatemanager\behaviors\TranslateBehavior::className(),
  *      'translateAttributes' => ['names of multilingual fields'],
  *      'category' => static::tableName(),
  * ],

@@ -1,11 +1,11 @@
 <?php
 
-namespace lajax\translatemanager\services;
+namespace eseperio\translatemanager\services;
 
 use Yii;
 use yii\helpers\Json;
 use yii\base\InvalidConfigException;
-use lajax\translatemanager\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageSource;
 
 /**
  * Generator class for producing JavaScript files containing language elements.
@@ -37,7 +37,7 @@ class Generator
     private $_template = 'var languageItems=(function(){var _languages={language_items};return{getLanguageItems:function(){return _languages;}};})();';
 
     /**
-     * @param \lajax\translatemanager\Module $module
+     * @param \eseperio\translatemanager\Module $module
      * @param string $language_id Language of the file to be generated.
      */
     public function __construct($module, $language_id)

@@ -1,10 +1,10 @@
 <?php
 
-namespace lajax\translatemanager\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
 use Yii;
-use lajax\translatemanager\models\LanguageSource;
-use lajax\translatemanager\models\LanguageTranslate;
+use eseperio\translatemanager\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageTranslate;
 
 /**
  * Class for creating front end translation dialoge box

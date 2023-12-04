@@ -1,8 +1,8 @@
 <?php
 
-namespace lajax\translatemanager\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use lajax\translatemanager\services\Optimizer;
+use eseperio\translatemanager\services\Optimizer;
 
 /**
  * Class for optimizing language database.

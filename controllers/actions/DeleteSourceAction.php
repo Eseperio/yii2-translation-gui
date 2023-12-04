@@ -1,10 +1,10 @@
 <?php
 
-namespace lajax\translatemanager\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
 use Yii;
 use yii\web\Response;
-use lajax\translatemanager\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageSource;
 
 /**
  * Deletes an existing LanguageSource model.

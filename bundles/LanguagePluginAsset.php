@@ -1,6 +1,6 @@
 <?php
 
-namespace lajax\translatemanager\bundles;
+namespace eseperio\translatemanager\bundles;
 
 use yii\web\AssetBundle;
 
@@ -16,7 +16,7 @@ class LanguagePluginAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@lajax/translatemanager/assets';
+    public $sourcePath = '@eseperio/translatemanager/assets';
 
     /**
      * @inheritdoc

@@ -1,6 +1,6 @@
 <?php
 
-namespace lajax\translatemanager\bundles;
+namespace eseperio\translatemanager\bundles;
 
 use yii\web\AssetBundle;
 
@@ -16,7 +16,7 @@ class ScanPluginAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@lajax/translatemanager/assets';
+    public $sourcePath = '@eseperio/translatemanager/assets';
 
     /**
      * @inheritdoc
@@ -30,6 +30,6 @@ class ScanPluginAsset extends AssetBundle
      */
     public $depends = [
         'yii\web\JqueryAsset',
-        'lajax\translatemanager\bundles\TranslationPluginAsset',
+        'eseperio\translatemanager\bundles\TranslationPluginAsset',
     ];
 }

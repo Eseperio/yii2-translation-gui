@@ -1,6 +1,6 @@
 <?php
 
-namespace lajax\translatemanager\services\scanners;
+namespace eseperio\translatemanager\services\scanners;
 
 use yii\helpers\Console;
 
