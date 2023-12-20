@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{view} {update} {translate} {delete}',
                 'buttons' => [
                     'translate' => function ($url, $model, $key) {
-                        return Html::a('<span class="glyphicon glyphicon-list-alt"></span>', ['language/translate', 'language_id' => $model->language_id], [
+                        return Html::a('<span class="fa fa-list"></span>', ['language/translate', 'language_id' => $model->language_id], [
                             'title' => Yii::t('language', 'Translate'),
                             'data-pjax' => '0',
                         ]);

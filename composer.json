@@ -1,5 +1,5 @@
 {
-    "name": "eseperio/yii2-translate-manager",
+    "name": "eseperio/yii2-translation-gui",
     "description": "Translation GUI for yii2. Thanks to lajax/yii2-translation-manager",
     "type": "yii2-extension",
     "keywords": ["yii2", "extension", "translate", "language", "module"],
@@ -17,7 +17,8 @@
     "require": {
         "yiisoft/yii2": "~2.0.0",
         "yiisoft/yii2-jui": "~2.0.0",
-        "yiisoft/yii2-bootstrap": "~2.0.0"
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-httpclient": "~2.0.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.1"

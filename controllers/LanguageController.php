@@ -35,11 +35,11 @@ class LanguageController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['list', 'change-status', 'optimizer', 'scan', 'translate', 'save', 'dialog', 'message', 'view', 'create', 'update', 'delete', 'delete-source', 'import', 'export'],
+                'only' => ['list', 'change-status', 'optimizer', 'scan', 'translate', 'save', 'dialog', 'message', 'view', 'create', 'update', 'delete', 'delete-source', 'import', 'export', 'auto-translate'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['list', 'change-status', 'optimizer', 'scan', 'translate', 'save', 'dialog', 'message', 'view', 'create', 'update', 'delete', 'delete-source', 'import', 'export'],
+                        'actions' => ['list', 'change-status', 'optimizer', 'scan', 'translate', 'save', 'dialog', 'message', 'view', 'create', 'update', 'delete', 'delete-source', 'import', 'export', 'auto-translate'],
                         'roles' => $this->module->roles,
                     ],
                 ],
@@ -70,6 +70,9 @@ class LanguageController extends Controller
             ],
             'translate' => [
                 'class' => 'eseperio\translatemanager\controllers\actions\TranslateAction',
+            ],
+            'auto-translate' => [
+                'class' => 'eseperio\translatemanager\controllers\actions\AutoTranslateAction',
             ],
             'save' => [
                 'class' => 'eseperio\translatemanager\controllers\actions\SaveAction',

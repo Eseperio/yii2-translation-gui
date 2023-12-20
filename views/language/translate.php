@@ -5,12 +5,14 @@
  *
  * @since 1.0
  */
-use yii\helpers\Html;
+
+use eseperio\proshop\common\components\Html;
 use yii\widgets\Pjax;
 use yii\grid\GridView;
 use yii\widgets\ActiveForm;
 use eseperio\translatemanager\helpers\Language;
 use eseperio\translatemanager\models\Language as Lang;
+
 
 /* @var $this \yii\web\View */
 /* @var $language_id string */
@@ -23,7 +25,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('language', 'Languages'), 'u
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?= Html::hiddenInput('language_id', $language_id, ['id' => 'language_id', 'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/save')]); ?>
+<?= Html::hiddenInput('language_id', $language_id, ['id' => 'language_id']); ?>
 <div id="translates" class="<?= $language_id ?>">
     <?php
     Pjax::begin([
@@ -32,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
     $form = ActiveForm::begin([
         'method' => 'get',
         'id' => 'search-form',
+        'action' => ['translate'],
         'enableAjaxValidation' => false,
         'enableClientValidation' => false,
     ]);
@@ -59,6 +62,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'format' => 'raw',
+                'content' => function ($data) {
+                    return Html::button(Html::icon('arrow-right'), ['type' => 'button', 'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/auto-translate'), 'data-id' => $data->id, 'class' => 'btn btn-sm btn-primary']);
+                },
+                'contentOptions' => ['style' => 'width: 30px; text-align: center;'],
+            ],
+            [
+                'format' => 'raw',
                 'attribute' => 'translation',
                 'filterInputOptions' => [
                     'class' => 'form-control',
@@ -74,8 +84,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'label' => Yii::t('language', 'Action'),
                 'content' => function ($data) {
-                    return Html::button(Yii::t('language', 'Save'), ['type' => 'button', 'data-id' => $data->id, 'class' => 'btn btn-lg btn-success']);
-                },
+                    return Html::button(Yii::t('language', 'Save'), ['type' => 'button', 'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/save'), 'data-id' => $data->id, 'class' => 'btn btn-lg btn-success']);
+                }
             ],
         ],
     ]);
