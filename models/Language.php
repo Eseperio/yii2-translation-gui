@@ -214,4 +214,12 @@ class Language extends \yii\db\ActiveRecord
         return $this->hasMany(LanguageSource::className(), ['id' => 'id'])
             ->viaTable(LanguageTranslate::tableName(), ['language' => 'language_id']);
     }
+
+    /**
+     * @return array
+     */
+    public static function getActiveLanguages()
+    {
+        return self::find()->select(['name'])->where(['status' => 1])->all();
+    }
 }

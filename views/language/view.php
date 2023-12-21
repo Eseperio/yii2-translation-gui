@@ -4,6 +4,8 @@
  *
  * @since 1.3
  */
+
+use eseperio\translatemanager\widgets\LanguageSelectorWidget;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -25,6 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ])
+        ?>
+        <?=
+        LanguageSelectorWidget::widget([
+            'languages' => ['en' => 'English', 'es' => 'Español'],
+        ]);
         ?>
     </p>
 
