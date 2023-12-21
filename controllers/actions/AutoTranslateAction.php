@@ -20,8 +20,6 @@ class AutoTranslateAction extends Action
         $languageId = Yii::$app->request->post('language_id', Yii::$app->language);
         $languageTranslate = LanguageTranslate::findOne(['id' => $id, 'language' => $languageId]) ?:
             new LanguageTranslate(['id' => $id, 'language' => $languageId]);
-
-//        TODO: revisar que el boton es guardar o traducir porque se traduce de ambos botones aunque no se utilice al guardar
         if (Yii::$app->request->post('auto_translate', '') === 'true'){
             $languageTranslate->translation = Deepl::getTranslation(
                 Yii::$app->request->post('source', ''),
@@ -46,37 +44,7 @@ class AutoTranslateAction extends Action
                 'prb' => Yii::$app->request->post('auto_translate')
             ];
         }
-//        return $languageTranslate->getErrors();
     }
-
-//    private function translateWithDeepL($text, $source = 'EN', $target = 'ES')
-//    {
-//        $apiKey = $_ENV['DEEPL_API_KEY'];
-//        $apiUrl = $_ENV['DEEPL_URL'];
-//
-//        $data = [
-//            'auth_key' => $apiKey,
-//            'text' => $text,
-//            'source_lang' => $source, // Cambia según tu idioma fuente
-//            'target_lang' => $target, // Cambia según tu idioma de destino
-//        ];
-//
-//        $httpclient = new Client();
-//        $response = $httpclient->createRequest()
-//            ->setMethod('POST')
-//            ->setUrl($apiUrl)
-//            ->setData($data)
-//            ->send();
-//
-//        $responseData = json_decode($response->content, true);
-//
-//        if (isset($responseData['translations'][0]['text'])) {
-//            return $responseData['translations'][0]['text'];
-//        } else {
-//            return $text;
-////            $id = Yii::$app->request->post('id', 0);
-//        }
-//    }
 
     private function getLangISO($lang)
     {
