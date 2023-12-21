@@ -23,9 +23,12 @@ var translate = (function () {
             language_id: $('#language_id').val(),
             translation: $.trim($translation.val()),
             source: $.trim($source.val()),
+            auto_translate: $this.hasClass('auto-translate-button'),
         };
 
-        // helpers.post($this.data('url'), data, function (response) {
+        console.log(data);
+
+        // helpers.post($this.data('url'), data));
 
         $.ajax({
             url: $this.data('url'), // Obtener la URL del botón
@@ -33,8 +36,11 @@ var translate = (function () {
             dataType: 'json',
             data: data,
             success: function (response) {
+                // console.log(response);
                 if (response.status === 'success') {
-                    $translation.val(response.translation);
+                    if (data.auto_translate == true) {
+                        $translation.val(response.translation);
+                    }
                 }
                 $translation.focus(
                     $translation.css('border-color', 'green')

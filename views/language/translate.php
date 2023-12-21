@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'format' => 'raw',
                 'content' => function ($data) {
-                    return Html::button(Html::icon('arrow-right'), ['type' => 'button', 'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/auto-translate'), 'data-id' => $data->id, 'class' => 'btn btn-sm btn-primary']);
+                    return Html::button(Html::icon('arrow-right'), ['type' => 'button', 'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/auto-translate'), 'data-id' => $data->id, 'class' => 'btn btn-sm btn-primary auto-translate-button']);
                 },
                 'contentOptions' => ['style' => 'width: 30px; text-align: center;'],
             ],
