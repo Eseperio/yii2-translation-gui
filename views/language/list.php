@@ -8,10 +8,13 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 use eseperio\translatemanager\models\Language;
 use yii\widgets\Pjax;
+use eseperio\translatemanager\bundles\BulkTranslationPluginAsset;
 
 /* @var $this \yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel eseperio\translatemanager\models\searches\LanguageSearch */
+
+BulkTranslationPluginAsset::register($this);
 
 $this->title = Yii::t('language', 'List of languages');
 $this->params['breadcrumbs'][] = $this->title;
@@ -49,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update} {translate} {delete}',
+                'template' => '{view} {update} {translate} {delete} {bulktranslation}',
                 'buttons' => [
                     'translate' => function ($url, $model, $key) {
                         return Html::a('<span class="fa fa-list"></span>', ['language/translate', 'language_id' => $model->language_id], [
@@ -57,10 +60,45 @@ $this->params['breadcrumbs'][] = $this->title;
                             'data-pjax' => '0',
                         ]);
                     },
+                    'bulktranslation' => function ($url, $model, $key) {
+                        return Html::button('BT', ['type' => 'button', 'data-id' => $model->language_id, 'class' => 'btn btn-sm btn-primary bulk-translation', 'data-url' => '/manager/translatemanager/language/bulk-auto-translate',
+                            'title' => Yii::t('language', 'Bulk language translation'),
+                        ]);
+//                        return Html::button('BT', ['type' => 'button', 'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/bulk-auto-translate'), 'data-id' => $model->language_id, 'class' => 'btn btn-sm btn-primary bulk-translation']);
+                    },
                 ],
             ],
         ],
     ]);
     Pjax::end();
+    ?>
+
+    <?php
+    yii\bootstrap\Modal::begin([
+        'header' => '<h2>'. Yii::t('language', 'Translate the entire language '). '<span id="modal_languaje_id"></span></h2>',
+        'id' => 'bulk-translation-modal',
+        'size' => 'modal-md',
+    ]);
+    ?>
+
+    <div id="bulk-translation-content">
+        <div class="row">
+            <div class="col-md-8"><?= Yii::t('language','The number of characters to be translated is ')?></div>
+            <div class="col-md-4" id="modal_total_charts"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div><?= Yii::t('language', 'Are you sure you can translate the whole language?')?></div>
+            </div>
+        </div>
+        <br>
+        <?php
+            echo Html::button('Confirm translation', ['type' => 'button', 'class' => 'btn btn-sm btn-primary', 'data-url' => '/manager/translatemanager/language/bulk-auto-translate', 'id' => 'bulk-translation-confirm']);
+        ?>
+    </div>
+
+    <?php
+    yii\bootstrap\Modal::end();
     ?>
 </div>

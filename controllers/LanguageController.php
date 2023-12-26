@@ -74,6 +74,9 @@ class LanguageController extends Controller
             'auto-translate' => [
                 'class' => 'eseperio\translatemanager\controllers\actions\AutoTranslateAction',
             ],
+            'bulk-auto-translate' => [
+                'class' => 'eseperio\translatemanager\controllers\actions\BulkAutoTranslateAction',
+            ],
             'save' => [
                 'class' => 'eseperio\translatemanager\controllers\actions\SaveAction',
             ],

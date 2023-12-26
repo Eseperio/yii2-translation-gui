@@ -48,7 +48,9 @@ TranslateManagerAsset::register($this);
                 ['label' => Yii::t('language', 'Im-/Export'), 'items' => [
                     ['label' => Yii::t('language', 'Import'), 'url' => ['/translatemanager/language/import']],
                     ['label' => Yii::t('language', 'Export'), 'url' => ['/translatemanager/language/export']],
-                ]],
+                ],
+                    ['label' => Yii::t('language', 'TranslateApiSelect'), 'url' => ['/translatemanager/language/_form']],
+                ],
             ];
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
