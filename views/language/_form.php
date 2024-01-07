@@ -4,12 +4,13 @@
  *
  * @since 1.3
  */
+
+use eseperio\translatemanager\src\models\Language;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use eseperio\translatemanager\models\Language;
 
 /* @var $this yii\web\View */
-/* @var $model eseperio\translatemanager\models\Language */
+/* @var $model \eseperio\translatemanager\src\models\Language */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

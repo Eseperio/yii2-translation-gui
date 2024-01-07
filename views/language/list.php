@@ -4,14 +4,15 @@
  *
  * @since 1.0
  */
+
+use eseperio\translatemanager\src\models\Language;
 use yii\grid\GridView;
 use yii\helpers\Html;
-use eseperio\translatemanager\models\Language;
 use yii\widgets\Pjax;
 
 /* @var $this \yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $searchModel eseperio\translatemanager\models\searches\LanguageSearch */
+/* @var $searchModel \eseperio\translatemanager\src\models\searches\LanguageSearch */
 
 $this->title = Yii::t('language', 'List of languages');
 $this->params['breadcrumbs'][] = $this->title;

@@ -6,7 +6,7 @@
  */
 
 /* @var $this yii\web\View */
-/* @var $model eseperio\translatemanager\models\Language */
+/* @var $model \eseperio\translatemanager\src\models\Language */
 
 $this->title = Yii::t('language', 'Create {modelClass}', [
     'modelClass' => 'Language',

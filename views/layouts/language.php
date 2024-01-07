@@ -4,11 +4,12 @@
  *
  * @since 1.0
  */
-use yii\helpers\Html;
+
+use eseperio\translatemanager\src\bundles\TranslateManagerAsset;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-use eseperio\translatemanager\bundles\TranslateManagerAsset;
 
 /*
  * @var \yii\web\View $this

@@ -4,11 +4,12 @@
  *
  * @since 1.3
  */
+
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model eseperio\translatemanager\models\Language */
+/* @var $model \eseperio\translatemanager\src\models\Language */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('language', 'Languages'), 'url' => ['list']];

@@ -7,17 +7,17 @@
  */
 
 use eseperio\proshop\common\components\Html;
-use yii\widgets\Pjax;
+use eseperio\translatemanager\src\helpers\Language;
+use eseperio\translatemanager\src\models\Language as Lang;
 use yii\grid\GridView;
 use yii\widgets\ActiveForm;
-use eseperio\translatemanager\helpers\Language;
-use eseperio\translatemanager\models\Language as Lang;
+use yii\widgets\Pjax;
 
 
 /* @var $this \yii\web\View */
 /* @var $language_id string */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $searchModel eseperio\translatemanager\models\searches\LanguageSourceSearch */
+/* @var $searchModel \eseperio\translatemanager\src\models\searches\LanguageSourceSearch */
 /* @var $searchEmptyCommand string */
 
 $this->title = Yii::t('language', 'Translation into {language_id}', ['language_id' => $language_id]);

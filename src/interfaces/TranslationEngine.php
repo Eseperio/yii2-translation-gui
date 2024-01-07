@@ -1,0 +1,19 @@
+<?php
+
+namespace eseperio\translatemanager\src\interfaces;
+
+interface TranslationEngine
+{
+    /**
+     * Api call to Translate to a string.
+     * @param string $text Text to translate
+     * @param string $source Source language
+     * @param string $target Target language
+     */
+    public static function getTranslation($text, $source, $target);
+
+    /**
+     * Api call to Translate the entire website.
+     */
+    public function getBulkTranslation($params = []);
+}
