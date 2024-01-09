@@ -1,10 +1,10 @@
 <?php
 
-namespace eseperio\translatemanager\src\behaviors;
+namespace eseperio\translatemanager\behaviors;
 
-use eseperio\translatemanager\src\helpers\Language;
-use eseperio\translatemanager\src\models\LanguageSource;
-use eseperio\translatemanager\src\models\LanguageTranslate;
+use eseperio\translatemanager\helpers\Language;
+use eseperio\translatemanager\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageTranslate;
 use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\db\BaseActiveRecord;
@@ -47,7 +47,7 @@ use yii\db\BaseActiveRecord;
  *
  * @since 1.5.3
  */
-class noTranslateBehavior extends AttributeBehavior
+class TranslateBehavior extends AttributeBehavior
 {
     /**
      * @var array|string

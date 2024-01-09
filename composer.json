@@ -31,8 +31,11 @@
   },
   "autoload": {
     "psr-4": {
-      "eseperio\\translatemanager\\": "src/"
+      "eseperio\\translatemanager\\": "./src/"
     }
+  },
+  "extra": {
+    "bootstrap": "eseperio\\translatemanager\\bootstrap\\StaticTranslationsBootstrap"
   },
   "scripts": {
     "cs-fix": "php-cs-fixer fix --config=.php_cs",

@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\bundles;
+namespace eseperio\translatemanager\bundles;
 
 use yii\web\AssetBundle;
 
@@ -9,6 +9,7 @@ use yii\web\AssetBundle;
  *
  * @author Lajos Molnár <lajax.m@gmail.com>
  *
+ * @deprecated  since adaptation to proshop
  * @since 1.0
  */
 class TranslatePluginAsset extends AssetBundle
@@ -31,6 +32,6 @@ class TranslatePluginAsset extends AssetBundle
      */
     public $depends = [
         'yii\web\JqueryAsset',
-        'eseperio\translatemanager\src\bundles\TranslationPluginAsset',
+        'eseperio\translatemanager\bundles\TranslationPluginAsset',
     ];
 }

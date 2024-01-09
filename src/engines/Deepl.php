@@ -1,8 +1,8 @@
 <?php
 
-namespace eseperio\translatemanager\src\engines;
+namespace eseperio\translatemanager\engines;
 
-use eseperio\translatemanager\src\interfaces\TranslationEngine;
+use eseperio\translatemanager\interfaces\TranslationEngine;
 use yii\httpclient\Client;
 
 class Deepl implements TranslationEngine

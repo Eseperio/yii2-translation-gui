@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\bundles;
+namespace eseperio\translatemanager\bundles;
 
 use yii\web\AssetBundle;
 

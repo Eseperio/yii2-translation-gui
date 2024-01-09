@@ -1,9 +1,9 @@
 <?php
 
-namespace eseperio\translatemanager\src\helpers;
+namespace eseperio\translatemanager\helpers;
 
-use eseperio\translatemanager\src\bundles\TranslationPluginAsset;
-use eseperio\translatemanager\src\services\Scanner;
+use eseperio\translatemanager\bundles\TranslationPluginAsset;
+use eseperio\translatemanager\services\Scanner;
 use Yii;
 
 /**
@@ -215,7 +215,7 @@ class Language
      */
     public static function saveMessage($message, $category = 'database')
     {
-        $languageSources = \eseperio\translatemanager\src\models\LanguageSource::find()->where(['category' => $category])->all();
+        $languageSources = \eseperio\translatemanager\models\LanguageSource::find()->where(['category' => $category])->all();
 
         $messages = [];
         foreach ($languageSources as $languageSource) {
@@ -223,7 +223,7 @@ class Language
         }
 
         if (empty($messages[$message])) {
-            $languageSource = new \eseperio\translatemanager\src\models\LanguageSource();
+            $languageSource = new \eseperio\translatemanager\models\LanguageSource();
             $languageSource->category = $category;
             $languageSource->message = $message;
             $languageSource->save();
@@ -237,7 +237,7 @@ class Language
      */
     public static function getCategories()
     {
-        $languageSources = \eseperio\translatemanager\src\models\LanguageSource::find()->select('category')->distinct()->all();
+        $languageSources = \eseperio\translatemanager\models\LanguageSource::find()->select('category')->distinct()->all();
 
         $categories = [];
         foreach ($languageSources as $languageSource) {

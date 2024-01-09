@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
 /**
  * Deletes an existing Language model.

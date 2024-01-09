@@ -1,10 +1,10 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use eseperio\translatemanager\src\models\ImportForm;
-use eseperio\translatemanager\src\models\Language;
-use eseperio\translatemanager\src\services\Generator;
+use eseperio\translatemanager\models\ImportForm;
+use eseperio\translatemanager\models\Language;
+use eseperio\translatemanager\services\Generator;
 use Yii;
 use yii\web\UploadedFile;
 

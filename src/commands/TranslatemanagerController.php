@@ -1,9 +1,9 @@
 <?php
 
-namespace eseperio\translatemanager\src\commands;
+namespace eseperio\translatemanager\commands;
 
-use eseperio\translatemanager\src\services\Optimizer;
-use eseperio\translatemanager\src\services\Scanner;
+use eseperio\translatemanager\services\Optimizer;
+use eseperio\translatemanager\services\Scanner;
 use yii\console\Controller;
 use yii\helpers\Console;
 

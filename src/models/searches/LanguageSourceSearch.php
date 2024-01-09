@@ -6,10 +6,10 @@
  * @since 1.0
  */
 
-namespace eseperio\translatemanager\src\models\searches;
+namespace eseperio\translatemanager\models\searches;
 
-use eseperio\translatemanager\src\models\LanguageSource;
-use eseperio\translatemanager\src\models\LanguageTranslate;
+use eseperio\translatemanager\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageTranslate;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

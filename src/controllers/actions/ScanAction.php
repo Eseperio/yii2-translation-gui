@@ -1,10 +1,10 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use eseperio\translatemanager\src\bundles\ScanPluginAsset;
-use eseperio\translatemanager\src\models\LanguageSource;
-use eseperio\translatemanager\src\services\Scanner;
+use eseperio\translatemanager\bundles\ScanPluginAsset;
+use eseperio\translatemanager\models\LanguageSource;
+use eseperio\translatemanager\services\Scanner;
 use yii\data\ArrayDataProvider;
 
 /**

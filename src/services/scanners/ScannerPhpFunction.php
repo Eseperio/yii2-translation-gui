@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\services\scanners;
+namespace eseperio\translatemanager\services\scanners;
 
 use yii\helpers\Console;
 

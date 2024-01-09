@@ -1,9 +1,9 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use eseperio\translatemanager\src\models\LanguageSource;
-use eseperio\translatemanager\src\models\LanguageTranslate;
+use eseperio\translatemanager\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageTranslate;
 use Yii;
 
 /**

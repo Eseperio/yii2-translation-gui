@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\bundles;
+namespace eseperio\translatemanager\bundles;
 
 use yii\web\AssetBundle;
 
@@ -32,6 +32,6 @@ class FrontendTranslationPluginAsset extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\jui\JuiAsset',
-        'eseperio\translatemanager\src\bundles\TranslationPluginAsset',
+        'eseperio\translatemanager\bundles\TranslationPluginAsset',
     ];
 }

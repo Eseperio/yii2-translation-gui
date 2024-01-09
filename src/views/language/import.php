@@ -1,6 +1,6 @@
 <?php
 
-use eseperio\translatemanager\src\models\ImportForm;
+use eseperio\translatemanager\models\ImportForm;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 

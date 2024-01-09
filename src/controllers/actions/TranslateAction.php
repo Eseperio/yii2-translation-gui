@@ -1,31 +1,16 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use eseperio\translatemanager\src\bundles\TranslateAsset;
-use eseperio\translatemanager\src\bundles\TranslatePluginAsset;
-use eseperio\translatemanager\src\models\searches\LanguageSourceSearch;
 use Yii;
 
 /**
- * This class facilitates the listing of language elements to be translated.
  *
- * @author Lajos Molnár <lajax.m@gmail.com>
- *
- * @since 1.0
+ * Renders a view with all the categories and its translation for given iso language code.
+ * @property  \eseperio\translatemanager\controllers\LanguageController $controller
  */
 class TranslateAction extends \yii\base\Action
 {
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        TranslateAsset::register(Yii::$app->controller->view);
-        TranslatePluginAsset::register(Yii::$app->controller->view);
-        parent::init();
-    }
-
     /**
      * List of language elements.
      *
@@ -33,16 +18,32 @@ class TranslateAction extends \yii\base\Action
      */
     public function run()
     {
-        $searchModel = new LanguageSourceSearch([
-            'searchEmptyCommand' => $this->controller->module->searchEmptyCommand,
-        ]);
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        $locale = Yii::$app->request->get('locale', Yii::$app->language);
+        $categories = $this->getCategories();
+        // add progress to categories
+        foreach ($categories as $key => $category) {
+            $categories[$key] = [
+                'category' => $category,
+                'progress' => $this->controller->module->languageProgress($locale, $category)
+            ];
+        }
+        $language = $this->controller->module->getLanguageData($locale);
 
         return $this->controller->render('translate', [
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
-            'searchEmptyCommand' => $this->controller->module->searchEmptyCommand,
-            'language_id' => Yii::$app->request->get('language_id', ''),
+            'categories' => $categories,
+            'language' => $language
         ]);
+
+    }
+
+    /**
+     * @return array with all the categories for translations defined in the application
+     */
+    private function getCategories()
+    {
+        $i18n = Yii::$app->i18n;
+        $categories = array_keys($i18n->translations);
+
+        return $categories;
     }
 }

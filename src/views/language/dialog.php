@@ -9,8 +9,8 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $languageSource \eseperio\translatemanager\src\models\LanguageSource */
-/* @var $languageTranslate \eseperio\translatemanager\src\models\LanguageTranslate */
+/* @var $languageSource \eseperio\translatemanager\models\LanguageSource */
+/* @var $languageTranslate \eseperio\translatemanager\models\LanguageTranslate */
 ?>
 <div id="translate-manager-dialog">
     <div class="translate-manager-message">

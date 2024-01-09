@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
 /**
  * Displays a single Language model.

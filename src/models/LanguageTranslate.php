@@ -6,7 +6,7 @@
  * @since 1.0
  */
 
-namespace eseperio\translatemanager\src\models;
+namespace eseperio\translatemanager\models;
 
 use Yii;
 
@@ -17,6 +17,11 @@ use Yii;
  * @property string $language
  * @property string $translation
  * @property LanguageSource $LanguageSource
+ * @property-read string $languageName
+ * @property-read \eseperio\translatemanager\models\LanguageTranslate[] $translatedLanguages
+ * @property-read \yii\db\ActiveQuery $id0
+ * @property-read array $translatedLanguageNames
+ * @property-read \yii\db\ActiveQuery $languageSource
  * @property Language $language0
  */
 class LanguageTranslate extends \yii\db\ActiveRecord
@@ -43,7 +48,7 @@ class LanguageTranslate extends \yii\db\ActiveRecord
     {
         $dbMessageSources = Yii::getObjectVars(Yii::$app->i18n->getMessageSource('DbMessageSource'));
 
-        return isset($dbMessageSources['messageTable']) ? $dbMessageSources['messageTable'] : '{{%message}}';
+        return $dbMessageSources['messageTable'] ?? '{{%message}}';
     }
 
     /**
@@ -54,8 +59,8 @@ class LanguageTranslate extends \yii\db\ActiveRecord
         return [
             [['id', 'language'], 'required'],
             [['id'], 'integer'],
-            [['id'], 'exist', 'targetClass' => '\eseperio\translatemanager\src\models\LanguageSource'],
-            [['language'], 'exist', 'targetClass' => '\eseperio\translatemanager\src\models\Language', 'targetAttribute' => 'language_id'],
+            [['id'], 'exist', 'targetClass' => '\eseperio\translatemanager\models\LanguageSource'],
+            [['language'], 'exist', 'targetClass' => '\eseperio\translatemanager\models\Language', 'targetAttribute' => 'language_id'],
             [['translation'], 'string'],
             [['language'], 'string', 'max' => 5],
         ];

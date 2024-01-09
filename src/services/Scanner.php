@@ -1,8 +1,8 @@
 <?php
 
-namespace eseperio\translatemanager\src\services;
+namespace eseperio\translatemanager\services;
 
-use eseperio\translatemanager\src\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageSource;
 use Yii;
 use yii\helpers\Console;
 
@@ -34,10 +34,10 @@ class Scanner
      * @var array List of language element classes
      */
     public $scanners = [
-        '\eseperio\translatemanager\src\services\scanners\ScannerPhpFunction',
-        '\eseperio\translatemanager\src\services\scanners\ScannerPhpArray',
-        '\eseperio\translatemanager\src\services\scanners\ScannerJavaScriptFunction',
-        '\eseperio\translatemanager\src\services\scanners\ScannerDatabase',
+        '\eseperio\translatemanager\services\scanners\ScannerPhpFunction',
+        '\eseperio\translatemanager\services\scanners\ScannerPhpArray',
+        '\eseperio\translatemanager\services\scanners\ScannerJavaScriptFunction',
+        '\eseperio\translatemanager\services\scanners\ScannerDatabase',
     ];
 
     /**

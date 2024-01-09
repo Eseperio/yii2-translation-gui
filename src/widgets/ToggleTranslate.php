@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\widgets;
+namespace eseperio\translatemanager\widgets;
 
 use eseperio\translatemanager\Module;
 use Yii;
@@ -87,14 +87,14 @@ class ToggleTranslate extends Widget
      *
      * @var string added StyleSheets and their dependencies
      */
-    public $frontendTranslationAsset = 'eseperio\translatemanager\src\bundles\FrontendTranslationAsset';
+    public $frontendTranslationAsset = 'eseperio\translatemanager\bundles\FrontendTranslationAsset';
 
     /**
      * example: http://www.yiiframework.com/doc-2.0/guide-structure-assets.html
      *
      * @var string added JavaScripts and their dependencies
      */
-    public $frontendTranslationPluginAsset = 'eseperio\translatemanager\src\bundles\FrontendTranslationPluginAsset';
+    public $frontendTranslationPluginAsset = 'eseperio\translatemanager\bundles\FrontendTranslationPluginAsset';
 
     /**
      * @inheritdoc
