@@ -4,12 +4,11 @@ namespace eseperio\translatemanager;
 
 use eseperio\proshop\common\helpers\ArrayHelper;
 use eseperio\proshop\common\helpers\StringHelper;
-use http\Exception\InvalidArgumentException;
+use eseperio\translatemanager\services\MessageLoaderService;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\FileHelper;
 use yii\i18n\MessageSource;
-use yii\i18n\PhpMessageSource;
 use yii\web\ForbiddenHttpException;
 use yii\web\Response;
 
@@ -281,12 +280,12 @@ class Module extends \yii\base\Module
      * comparing the number of translated items against the total number of items
      * @param $locale
      * @param $category
-     * @return int the progress of the translation for given locale and category based on how many items are translated
+     * @return array the progress of the translation for given locale and category based on how many items are translated
+     * @throws \yii\base\InvalidConfigException
      */
-    public function languageProgress($locale, $category)
+    public function languageProgress($locale, $category): array
     {
-        $i18n = Yii::$app->i18n;
-        $msgSrcCfg =Yii::$app->i18n->getMessageSource($category);
+        $msgSrcCfg = Yii::$app->i18n->getMessageSource($category);
 
         // load all the messages defined for default language in configuration
         $defaultLang = $msgSrcCfg->sourceLanguage ?? Yii::$app->sourceLanguage;
@@ -294,48 +293,28 @@ class Module extends \yii\base\Module
         $defaultMessages = $this->loadMessages($category, $msgSrcCfg, $defaultLang);
         $destMessages = $this->loadMessages($category, $msgSrcCfg, $locale);
         $origMsgCount = count($defaultMessages);
-        return $origMsgCount ? (count($destMessages) / $origMsgCount * 100) : 0;
+        return [
+            'translated' => count($destMessages),
+            'total' => $origMsgCount,
+            'percentage' =>$origMsgCount? round(count($destMessages) / $origMsgCount * 100) : 0
+        ];
 
     }
 
     /**
      * Load all the messages defined for default language in configuration
+     * @param $pattern
      * @param mixed $msgSrcCfg
      * @param string $language
-     * @return array|mixed
+     * @return array<array>
+     * @throws \yii\base\InvalidConfigException
+     * @throws \yii\base\NotSupportedException
      */
-    private function loadMessages($category, MessageSource $msgSrcCfg, string $language)
+    public function loadMessages($pattern, MessageSource $msgSrcCfg, string $language)
     {
-        // scann all the files within the basePath defined in configuration
-        if(!$msgSrcCfg instanceof PhpMessageSource){
-            return [];
-        }
-        $messageFile = Yii::getAlias($msgSrcCfg->basePath) . "/$language/";
-        if (isset($this->fileMap[$category])) {
-            $messageFile .= $this->fileMap[$category];
-        } else {
-            $messageFile .= str_replace('\\', '/', $category) . '.php';
-        }
-        var_dump($messageFile);
-        $messages = $this->loadMessagesFromFile($messageFile);
-
-        return $messages;
-
+        return MessageLoaderService::getMessages($pattern, $msgSrcCfg);
     }
 
-    /**
-     * @param string $messageFile
-     * @return array|mixed
-     */
-    private function loadMessagesFromFile(string $messageFile)
-    {
-        if (is_file($messageFile)) {
-            $messages = require $messageFile;
-        } else {
-            $messages = [];
-        }
-        return $messages;
-    }
 
 
 }
