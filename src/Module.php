@@ -97,6 +97,7 @@ class Module extends \yii\base\Module
 {
 
 
+    public $defaultRoute = 'language/index';
     /**
      * @var string|null a writable directory where custom translations and language elements will be stored.
      */

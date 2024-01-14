@@ -21,10 +21,10 @@ class IndexAction extends Action
 
         $languagesEnabled = array_intersect_key($availableLanguages, array_flip($languagesEnabled));
 
-        $availableLanguages = ArrayHelper::map($availableLanguages, 'language_id', function($model){
+        $availableLanguages = ArrayHelper::map($availableLanguages, 'language_id', function ($model) {
             return $model['name'] . ' (' . $model['ascii_name'] . ')';
         });
-        return $this->controller->render('index',[
+        return $this->controller->render('index', [
             'languagesEnabled'=> $languagesEnabled,
             'languageAvailable'=> $availableLanguages,
         ]);

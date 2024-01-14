@@ -1,6 +1,6 @@
 <?php
 
-use eseperio\proshop\common\helpers\Url;
+use yii\helpers\Html;
 use yii\helpers\Inflector;
 
 /* @var $this \yii\web\View */
@@ -12,81 +12,52 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('translatemanager', 'Transla
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerJsVar('LOCALE_IN_TRANSLATION', $language['language_id']);
 
-$script = <<< JS
-$(document).on('click', '.index-link', function(e) {
-    e.preventDefault();
-    var targetId = "#"+$(this).attr('href').split('#')[1];
-    $('.panel-collapse').not(targetId).collapse('hide');
-    $(targetId).collapse('show');
-    $('html, body').animate({
-        scrollTop: $(targetId).offset().top
-    }, 1000);
-});
+// init tabs
+$js = <<<JS
+    $('#translates a.index-link').on('click', function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+    $('#translates a.index-link:first').tab('show');
 JS;
-$this->registerJs($script, \yii\web\View::POS_READY);
+$this->registerJs($js);
 ?>
 
 <div id="translates" class="<?= $language['language_id'] ?>">
     <div class="row">
-        <div class="col-md-3"><div class="box">
-                <ul class="nav nav-pills nav-stacked">
-                    <?php foreach ($patterns as $patternName => $categories): ?>
-                        <?php $safePatternName = Inflector::slug($patternName); ?>
-                        <li>
-                            <a href="<?= Url::current() ?>#collapse-<?= $safePatternName ?>"
-                               class="index-link"><?= $patternName ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div></div>
-        <div class="col-md-9">
-            <div class="box">
-                <div class="box-body">
-                    <?php foreach ($patterns as $patternName => $categories): ?>
-                        <?php $safePatternName = Inflector::slug($patternName); ?>
-                        <div class="panel-group" id="accordion-<?= $safePatternName ?>">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" data-toggle="collapse"
-                                     data-parent="#accordion-<?= $safePatternName ?>"
-                                     href="#collapse-<?= $safePatternName ?>">
-                                    <h2 class="panel-title">
-                                        <?= $patternName ?>
-                                    </h2>
-                                </div>
-                                <div id="collapse-<?= $safePatternName ?>" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <?php foreach ($categories['messages'] as $category => $messages): ?>
-                                        <?php if($category !==$patternName): ?>
-                                                <h3><?= $category ?></h3>
-
-                                        <?php endif; ?>
-                                            <?php foreach ($messages as $key => $message): ?>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="well"><?= $key ?></div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-8">
-                                                        <?php if(strlen($key)> 60): ?>
-                                                        <textarea class="form-control" rows="3"><?= $message ?></textarea>
-                                                        <?php else: ?>
-                                                        <input type="text" class="form-control" value="<?= $message ?>">
-                                                        <?php endif; ?>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <button class="btn btn-default btn-translate" data-key="<?= $key ?>" data-locale="<?= $language['language_id'] ?>"><?= Yii::t('translatemanager', 'Autotranslate') ?></button>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                            <?php endforeach; ?>
-                                        <?php endforeach; ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+        <div class="col-md-3">
+            <div class="panel panel-body">
+                <?= Html::ul($patterns, [
+                    'item' => function ($item, $index) {
+                        $hash = '#group-' . Inflector::slug($index);
+                        $link = \yii\helpers\Url::current() . $hash;
+                        return Html::tag('li', Html::a($index, $link, [
+                            'class' => 'index-link'
+                        ]));
+                    },
+                    'class' => 'nav nav-pills nav-stacked'
+                ]) ?>
             </div>
+        </div>
+        <div class="col-md-9 tab-content">
+
+            <?php foreach ($patterns as $pattern => $details): ?>
+                <div class="panel tab-pane" role="tabpanel" id="group-<?= \yii\helpers\Inflector::slug($pattern) ?>">
+                    <div class="panel-heading">
+                        <h2 class="panel-title"><?= $pattern ?></h2>
+                    </div>
+                    <div class="panel-body">
+                        <?= $this->render('partials/translate_pane', [
+                            'details' => $details,
+                            'pattern' => $pattern,
+                            'language' => $language,
+                        ]);
+                        ?>
+                    </div>
+                </div>
+
+            <?php endforeach; ?>
+
         </div>
     </div>
 </div>

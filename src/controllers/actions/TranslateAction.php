@@ -30,7 +30,6 @@ class TranslateAction extends \yii\base\Action
                 'messages' => $this->controller->module->loadMessages($pattern, $msgSrcCfg, $locale),
             ];
         }
-
         $language = $this->controller->module->getLanguageData($locale);
 
         return $this->controller->render('translate', [

@@ -17,7 +17,7 @@ $this->title = Yii::t('translatemanager', 'Translation manager')
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-body">
-                This is the list of languages enabled in the application through the translation configuration files
+                <?= Yii::t('translatemanager', "This is the list of languages enabled in the application through the translation configuration files") ?>
                 <?php
                 if (empty($languagesEnabled)) {
                     echo '<div class="alert alert-warning">No languages enabled</div>';
