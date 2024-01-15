@@ -5,7 +5,7 @@
  * @since 1.0
  */
 
-use eseperio\translatemanager\src\bundles\TranslateManagerAsset;
+use eseperio\translatemanager\bundles\TranslateManagerAsset;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;

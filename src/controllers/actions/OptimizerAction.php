@@ -1,8 +1,8 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use eseperio\translatemanager\src\services\Optimizer;
+use eseperio\translatemanager\services\Optimizer;
 
 /**
  * Class for optimizing language database.

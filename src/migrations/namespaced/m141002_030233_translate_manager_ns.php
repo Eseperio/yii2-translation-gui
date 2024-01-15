@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\migrations\namespaced;
+namespace eseperio\translatemanager\migrations\namespaced;
 
 require_once dirname(__DIR__) . '/m141002_030233_translate_manager.php';
 
@@ -13,6 +13,6 @@ require_once dirname(__DIR__) . '/m141002_030233_translate_manager.php';
  *
  * @author moltam
  */
-class m141002_030233_translate_manager_ns extends \eseperio\translatemanager\src\migrations\m141002_030233_translate_manager
+class m141002_030233_translate_manager_ns extends \eseperio\translatemanager\migrations\m141002_030233_translate_manager
 {
 }

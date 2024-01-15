@@ -1,10 +1,10 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use eseperio\translatemanager\src\bundles\TranslateAsset;
-use eseperio\translatemanager\src\bundles\TranslatePluginAsset;
-use eseperio\translatemanager\src\models\searches\LanguageSourceSearch;
+use eseperio\translatemanager\bundles\TranslateAsset;
+use eseperio\translatemanager\bundles\TranslatePluginAsset;
+use eseperio\translatemanager\models\searches\LanguageSourceSearch;
 use Yii;
 
 /**

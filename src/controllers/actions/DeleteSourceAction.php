@@ -1,8 +1,8 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use eseperio\translatemanager\src\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageSource;
 use Yii;
 use yii\web\Response;
 

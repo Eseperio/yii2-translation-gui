@@ -1,8 +1,8 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers;
+namespace eseperio\translatemanager\controllers;
 
-use eseperio\translatemanager\src\models\Language;
+use eseperio\translatemanager\models\Language;
 use yii\data\ArrayDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -57,52 +57,52 @@ class LanguageController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
             'list' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\ListAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\ListAction',
             ],
             'change-status' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\ChangeStatusAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\ChangeStatusAction',
             ],
             'optimizer' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\OptimizerAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\OptimizerAction',
             ],
             'scan' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\ScanAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\ScanAction',
             ],
             'translate' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\TranslateAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\TranslateAction',
             ],
             'auto-translate' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\AutoTranslateAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\AutoTranslateAction',
             ],
             'save' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\SaveAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\SaveAction',
             ],
             'dialog' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\DialogAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\DialogAction',
             ],
             'message' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\MessageAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\MessageAction',
             ],
             'view' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\ViewAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\ViewAction',
             ],
             'create' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\CreateAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\CreateAction',
             ],
             'update' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\UpdateAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\UpdateAction',
             ],
             'delete' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\DeleteAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\DeleteAction',
             ],
             'delete-source' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\DeleteSourceAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\DeleteSourceAction',
             ],
             'import' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\ImportAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\ImportAction',
             ],
             'export' => [
-                'class' => 'eseperio\translatemanager\src\controllers\actions\ExportAction',
+                'class' => 'eseperio\translatemanager\controllers\actions\ExportAction',
             ],
         ];
     }

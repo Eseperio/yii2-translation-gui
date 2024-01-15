@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\models\searches;
+namespace eseperio\translatemanager\models\searches;
 
 /**
  * Model search helper trait. Helps with common search tasks.

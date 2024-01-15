@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\interfaces;
+namespace eseperio\translatemanager\interfaces;
 
 interface TranslationEngine
 {

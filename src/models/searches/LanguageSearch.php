@@ -6,9 +6,9 @@
  * @since 1.0
  */
 
-namespace eseperio\translatemanager\src\models\searches;
+namespace eseperio\translatemanager\models\searches;
 
-use eseperio\translatemanager\src\models\Language;
+use eseperio\translatemanager\models\Language;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -26,7 +26,7 @@ class LanguageSearch extends Language
     {
         return [
             [['language_id', 'language', 'country', 'name', 'name_ascii'], 'safe'],
-            [['status'], 'integer'],
+            [['status'], 'integer']
         ];
     }
 
@@ -52,7 +52,9 @@ class LanguageSearch extends Language
             'query' => $query,
         ]);
 
+
         if (!($this->load($params) && $this->validate())) {
+            $query->andFilterWhere(['status' => Language::STATUS_ACTIVE]);
             return $dataProvider;
         }
 
@@ -64,7 +66,11 @@ class LanguageSearch extends Language
             ->andFilterWhere($this->createLikeExpression('language', $this->language))
             ->andFilterWhere($this->createLikeExpression('country', $this->country))
             ->andFilterWhere($this->createLikeExpression('name', $this->name))
-            ->andFilterWhere($this->createLikeExpression('name_ascii', $this->name_ascii));
+            ->andFilterWhere([
+                'OR',
+                $this->createLikeExpression('name_ascii', $this->name_ascii),
+                $this->createLikeExpression('language_id', $this->name_ascii)
+            ]);
 
         return $dataProvider;
     }

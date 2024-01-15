@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\migrations;
+namespace eseperio\translatemanager\migrations;
 
 use yii\db\Migration;
 use yii\db\Schema;

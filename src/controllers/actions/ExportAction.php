@@ -1,9 +1,9 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
 use eseperio\translatemanager\Module;
-use eseperio\translatemanager\src\models\ExportForm;
+use eseperio\translatemanager\models\ExportForm;
 use Yii;
 use yii\web\JsonResponseFormatter;
 use yii\web\Response;

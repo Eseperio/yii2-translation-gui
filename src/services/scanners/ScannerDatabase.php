@@ -1,8 +1,8 @@
 <?php
 
-namespace eseperio\translatemanager\src\services\scanners;
+namespace eseperio\translatemanager\services\scanners;
 
-use eseperio\translatemanager\src\services\Scanner;
+use eseperio\translatemanager\services\Scanner;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\Console;

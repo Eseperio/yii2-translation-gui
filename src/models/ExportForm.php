@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\models;
+namespace eseperio\translatemanager\models;
 
 use yii\base\Model;
 

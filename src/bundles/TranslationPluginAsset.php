@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\bundles;
+namespace eseperio\translatemanager\bundles;
 
 use yii\web\AssetBundle;
 
@@ -30,6 +30,6 @@ class TranslationPluginAsset extends AssetBundle
      * @inheritdoc
      */
     public $depends = [
-        'eseperio\translatemanager\src\bundles\LanguageItemPluginAsset',
+        'eseperio\translatemanager\bundles\LanguageItemPluginAsset',
     ];
 }

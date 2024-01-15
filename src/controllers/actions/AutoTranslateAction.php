@@ -1,10 +1,10 @@
 <?php
 
-namespace eseperio\translatemanager\src\controllers\actions;
+namespace eseperio\translatemanager\controllers\actions;
 
-use eseperio\translatemanager\src\engines\Deepl;
-use eseperio\translatemanager\src\models\LanguageTranslate;
-use eseperio\translatemanager\src\services\Generator;
+use eseperio\translatemanager\engines\Deepl;
+use eseperio\translatemanager\models\LanguageTranslate;
+use eseperio\translatemanager\services\Generator;
 use Yii;
 use yii\base\Action;
 use yii\web\Response;

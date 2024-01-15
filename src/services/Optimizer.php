@@ -1,8 +1,8 @@
 <?php
 
-namespace eseperio\translatemanager\src\services;
+namespace eseperio\translatemanager\services;
 
-use eseperio\translatemanager\src\models\LanguageSource;
+use eseperio\translatemanager\models\LanguageSource;
 use yii\helpers\Console;
 
 /**

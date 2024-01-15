@@ -1,7 +1,7 @@
 <?php
 
-use eseperio\translatemanager\src\models\ExportForm;
-use eseperio\translatemanager\src\models\Language;
+use eseperio\translatemanager\models\ExportForm;
+use eseperio\translatemanager\models\Language;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -13,6 +13,7 @@ use yii\web\Response;
 $this->title = Yii::t('language', 'Export');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php $this->beginContent('@eseperio/translatemanager/views/layouts/main.php'); ?>
 
 <div class="language-export col-sm-6">
 
@@ -35,3 +36,4 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php $this->endContent(); ?>

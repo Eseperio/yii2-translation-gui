@@ -1,6 +1,6 @@
 <?php
 
-namespace eseperio\translatemanager\src\bundles;
+namespace eseperio\translatemanager\bundles;
 
 use yii\web\AssetBundle;
 
@@ -30,6 +30,6 @@ class ScanPluginAsset extends AssetBundle
      */
     public $depends = [
         'yii\web\JqueryAsset',
-        'eseperio\translatemanager\src\bundles\TranslationPluginAsset',
+        'eseperio\translatemanager\bundles\TranslationPluginAsset',
     ];
 }
