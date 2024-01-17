@@ -32,7 +32,6 @@ var translate = (function () {
                 $("#bulk-translation-confirm").attr('data-id', data.language_id);
                 $("#modal_total_charts").html(response.totalCharts);
                 $("#bulk-translation-modal").modal("show");
-
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log("Error to write modal content:", errorThrown);
@@ -42,6 +41,7 @@ var translate = (function () {
 
     function _bulkTranslateLanguage($this) {
 
+        $("#loadingSpinner").show();
         var data = {
             language_id: $this.data('id'),
             action: 'translateLanguage',
@@ -55,10 +55,13 @@ var translate = (function () {
             success: function (response) {
 
                 console.log(response);
-
+                $("#loadingSpinner").hide();
+                $("#bulk-translation-content").html('success');
             },
             error: function (xhr, textStatus, errorThrown) {
-                console.log("Error to write modal content:", errorThrown);
+                console.log("Error to translate bulk content:", errorThrown);
+                $("#loadingSpinner").hide();
+                $("#bulk-translation-content").html('error');
             }
         });
     }
@@ -71,7 +74,6 @@ var translate = (function () {
             });
             $('#languages').on('click', '#bulk-translation-confirm', function () {
                 _bulkTranslateLanguage($(this));
-
             });
         }
     };

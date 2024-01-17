@@ -64,7 +64,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::button('BT', ['type' => 'button', 'data-id' => $model->language_id, 'class' => 'btn btn-sm btn-primary bulk-translation', 'data-url' => '/manager/translatemanager/language/bulk-auto-translate',
                             'title' => Yii::t('language', 'Bulk language translation'),
                         ]);
-//                        return Html::button('BT', ['type' => 'button', 'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/bulk-auto-translate'), 'data-id' => $model->language_id, 'class' => 'btn btn-sm btn-primary bulk-translation']);
                     },
                 ],
             ],
@@ -81,11 +80,28 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
     ?>
 
+    <?php
+    $css = <<<CSS
+    /* Aquí va tu código CSS */
+    span#loadingSpinner {
+        display: none;
+    }
+    
+    span#loadingSpinner i::before {
+        font-weight: 600;
+        color: #e30057;
+        font-size: 15px;
+    }
+    CSS;
+    $this->registerCss($css);
+    ?>
+
     <div id="bulk-translation-content">
         <div class="row">
             <div class="col-md-8"><?= Yii::t('language','The number of characters to be translated is ')?></div>
             <div class="col-md-4" id="modal_total_charts"></div>
         </div>
+        <br>
         <br>
         <div class="row">
             <div class="col-md-12">
@@ -96,6 +112,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
             echo Html::button('Confirm translation', ['type' => 'button', 'class' => 'btn btn-sm btn-primary', 'data-url' => '/manager/translatemanager/language/bulk-auto-translate', 'id' => 'bulk-translation-confirm']);
         ?>
+        <span id="loadingSpinner">
+            <i class="fal fa-spinner fa-spin"></i>
+        </span>
     </div>
 
     <?php

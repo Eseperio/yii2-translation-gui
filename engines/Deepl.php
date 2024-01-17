@@ -27,9 +27,4 @@ class Deepl implements TranslationEngine
 
         return $responseData['translations'][0]['text'] ?? $text;
     }
-
-    public function getBulkTranslation($params = [])
-    {
-
-    }
 }

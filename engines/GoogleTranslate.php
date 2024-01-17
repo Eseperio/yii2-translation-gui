@@ -30,9 +30,4 @@ class GoogleTranslate implements TranslationEngine
 
         return $responseData['data']['translations'][0]['translatedText'] ?? $text;
     }
-
-    public function getBulkTranslation($params = [])
-    {
-        // Implementación para traducción masiva si es necesario
-    }
 }

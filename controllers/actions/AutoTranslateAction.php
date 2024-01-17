@@ -3,6 +3,7 @@
 namespace eseperio\translatemanager\controllers\actions;
 
 use eseperio\translatemanager\engines\Deepl;
+use eseperio\translatemanager\engines\OpenAi;
 use Yii;
 use yii\base\Action;
 use yii\httpclient\Client;
@@ -22,7 +23,7 @@ class AutoTranslateAction extends Action
             new LanguageTranslate(['id' => $id, 'language' => $languageId]);
         $languageTranslate->translation = '';
         if (Yii::$app->request->post('auto_translate', '') === 'true'){
-            $languageTranslate->translation = Deepl::getTranslation(
+            $languageTranslate->translation = OpenAi::getTranslation(
                 Yii::$app->request->post('source', ''),
                 $this->getLangISO($languageSource), $this->getLangISO($languageId)
             );

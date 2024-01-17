@@ -12,8 +12,4 @@ interface TranslationEngine
      */
     public static function getTranslation($text, $source, $target);
 
-    /**
-     * Api call to Translate the entire website.
-     */
-    public function getBulkTranslation($params = []);
 }

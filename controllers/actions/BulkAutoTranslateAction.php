@@ -3,16 +3,18 @@
 namespace eseperio\translatemanager\controllers\actions;
 
 use eseperio\translatemanager\bundles\BulkTranslationPluginAsset;
-use eseperio\translatemanager\bundles\TranslationPluginAsset;
 use eseperio\translatemanager\engines\Deepl;
+use eseperio\translatemanager\engines\OpenAi;
 use eseperio\translatemanager\models\LanguageSource;
 use Yii;
 use yii\base\Action;
-use yii\httpclient\Client;
 use yii\web\Response;
 use eseperio\translatemanager\services\Generator;
 use eseperio\translatemanager\models\LanguageTranslate;
 
+/**
+ * Handles bulk translation
+ */
 class BulkAutoTranslateAction extends Action
 {
 
@@ -25,11 +27,18 @@ class BulkAutoTranslateAction extends Action
         parent::init();
     }
 
+    /**
+     * @return void
+     */
     public static function registerAssets()
     {
         BulkTranslationPluginAsset::register(Yii::$app->view);
     }
 
+    /**
+     * @return array
+     * @throws \yii\base\InvalidConfigException
+     */
     public function run()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
@@ -40,7 +49,7 @@ class BulkAutoTranslateAction extends Action
         $totalCharts = 0;
 
         $stringsToTranslate = LanguageSource::find()
-            ->select(['language_source.id', 'category', 'message', 'translation'])
+            ->select(['language_source.id', 'message'])
             ->leftJoin('language_translate', 'language_source.id = language_translate.id AND language_translate.language = :language', [':language' => $languageId])
             ->where(['language_translate.translation' => null])
             ->asArray()
@@ -53,10 +62,17 @@ class BulkAutoTranslateAction extends Action
             if ($action === 'translateLanguage') {
                 $languageTranslate = LanguageTranslate::findOne(['id' => $string['id'], 'language' => $languageId]) ?:
                 new LanguageTranslate(['id' => $string['id'], 'language' => $languageId]);
+
                 $translateText = Deepl::getTranslation(
                     $string['message'],
-                    $this->getLangISO($languageSource), $this->getLangISO($languageId)
+                    $this->getLangISO($languageSource),
+                    $this->getLangISO($languageId)
                 );
+//                $translateText = OpenAi::getTranslation(
+//                    $string['message'],
+//                    $this->getLangISO($languageSource),
+//                    $this->getLangISO($languageId)
+//                );
 
                 $languageTranslate->translation = $this->getTranslatedText($string['message'], $translateText);
 
@@ -69,7 +85,6 @@ class BulkAutoTranslateAction extends Action
                     return [
                         'status' => 'error',
                         'errors' => $languageTranslate->getErrors(),
-                        'prb' => $languageTranslate
                     ];
                 } else { // borrar else para funcionamiento normal del botón y que no se detenga en la primera traducción
                     return [
@@ -89,7 +104,11 @@ class BulkAutoTranslateAction extends Action
         ];
     }
 
-    private function getLangISO($lang)
+    /**
+     * @param $lang
+     * @return string
+     */
+    private function getLangISO($lang): string
     {
         $parts = explode('-', $lang, 2);
 
@@ -100,6 +119,11 @@ class BulkAutoTranslateAction extends Action
         return strtoupper($parts[0]);
     }
 
+    /**
+     * @param $textSource
+     * @param $text
+     * @return array|string|string[]
+     */
     private function getTranslatedText($textSource, $text) {
         // Encuentra todas las coincidencias de texto entre corchetes en el texto en inglés
         preg_match_all('/\{([^}]+)\}/', $textSource, $matchesSource);

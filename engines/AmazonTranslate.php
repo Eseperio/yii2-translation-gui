@@ -31,9 +31,4 @@ class AmazonTranslate implements TranslationEngine
 
         return $result['TranslatedText'] ?? $text;
     }
-
-    public function getBulkTranslation($params = [])
-    {
-        // Implementación para traducción masiva si es necesario
-    }
 }

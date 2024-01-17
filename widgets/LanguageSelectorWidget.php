@@ -4,6 +4,7 @@ namespace eseperio\translatemanager\widgets;
 
 use eseperio\translatemanager\models\Language;
 use eseperio\translatemanager\widgets\assets\LanguageSelectorAsset;
+use OpenAI;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
