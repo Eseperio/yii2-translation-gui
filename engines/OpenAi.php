@@ -6,6 +6,9 @@ use eseperio\proshop\common\components\OpenAIComponent;
 use eseperio\translatemanager\interfaces\TranslationEngine;
 use Yii;
 
+/**
+ * Implements support for openAi translation engine
+ */
 class OpenAi implements TranslationEngine
 {
     /**
