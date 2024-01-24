@@ -102,6 +102,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-4" id="modal_total_charts"></div>
         </div>
         <br>
+        <div class="row">
+            <div class="col-md-8"><?= Yii::t('language','The total number of strings to be translated is ')?></div>
+            <div class="col-md-4"><span id="modal_translated"></span> / <span id="modal_total_translations"></span></div>
+        </div>
         <br>
         <div class="row">
             <div class="col-md-12">
