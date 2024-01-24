@@ -11,5 +11,5 @@ interface TranslationEngine
      * @param string $target Target language
      */
     public static function getTranslation($text, $source, $target);
-
+    
 }

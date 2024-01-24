@@ -27,10 +27,10 @@ var translate = (function () {
             dataType: 'json',
             data: data,
             success: function (response) {
-
                 $("#modal_languaje_id").html(data.language_id);
                 $("#bulk-translation-confirm").attr('data-id', data.language_id);
                 $("#modal_total_charts").html(response.totalCharts);
+                $("#modal_total_translations").html(response.totalTranslations);
                 $("#bulk-translation-modal").modal("show");
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -53,10 +53,23 @@ var translate = (function () {
             dataType: 'json',
             data: data,
             success: function (response) {
-
                 console.log(response);
+
+                var sCount = $("#modal_translated").text();
+                if (!isNaN(parseInt(sCount))) {
+                    sCount = parseInt(sCount) + parseInt(response.translated_string);
+                    console.log(sCount + ' + ' + response.translated_string);
+                } else {
+                    sCount = parseInt(response.translated_string);
+                }
+                $("#modal_translated").html(sCount);
+
                 $("#loadingSpinner").hide();
-                $("#bulk-translation-content").html('success');
+                // $("#bulk-translation-content").html('success');
+
+                if (sCount < 20) {
+                    setTimeout(_bulkTranslateLanguage($this), 20000);
+                }
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log("Error to translate bulk content:", errorThrown);
