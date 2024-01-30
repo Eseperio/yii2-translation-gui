@@ -67,14 +67,16 @@ var translate = (function () {
                 $("#loadingSpinner").hide();
                 // $("#bulk-translation-content").html('success');
 
-                if (sCount < 20) {
-                    setTimeout(_bulkTranslateLanguage($this), 20000);
-                }
+                // if (sCount < 40) {
+                //     setTimeout(
+                //         $('#languages').on('click', '#bulk-translation-confirm', function () {_bulkTranslateLanguage($(this));}),
+                //         10000);
+                // }
             },
             error: function (xhr, textStatus, errorThrown) {
                 console.log("Error to translate bulk content:", errorThrown);
                 $("#loadingSpinner").hide();
-                $("#bulk-translation-content").html('error');
+                // $("#bulk-translation-content").html('error');
             }
         });
     }

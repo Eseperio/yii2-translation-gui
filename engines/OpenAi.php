@@ -28,12 +28,17 @@ class OpenAi implements TranslationEngine
         $translator = new OpenAIComponent;
         $category = 'info';
 
-        $response = $translator->translate($texts, $source, $target);
+        $response = str_replace(["```json", "```"], ['', ''], $translator->translate($texts, $source, $target));
+//        $response = $translator->translate($texts, $source, $target);
 
-//        $isJson = json_decode($response, true);
-//        if ((is_object($isJson) || is_array($isJson))) {
-//            $response = $isJson['message'];
-//        }
+        $isJson = json_decode($response, true);
+        if ((is_object($isJson) || is_array($isJson))) {
+//            if  (!empty($isJson['message'])) {
+//                $response = $isJson['message'];
+//            } else {
+                $response = $isJson;
+//            }
+        }
 
         if (!empty($response['error'])) {
             Yii::$app->session->addFlash('danger', $response['error']);
@@ -45,11 +50,8 @@ class OpenAi implements TranslationEngine
     public static function getBulkTranslation($stringsToTranslate, $source = 'en-US', $target = 'es-ES')
     {
 
-//        $cad1 = "```json\n{\"message\": [\n    {\"id\": 2638,\"message\": \"{delta, plural, =1{1 minuto} other{# minutos}\"},\n    {\"id\": 2639,\"message\": \"{delta, plural, =1{1 segundo} other{# segundos}\"},\n    {\"id\": 2640,\"message\": \"{nFormatted} B\"},\n    {\"id\": 2641,\"message\": \"{nFormatted} KiB\"},\n    {\"id\": 2642,\"message\": \"{nFormatted} MiB\"}\n],\n \"error\": null\n}\n```";
-//        $cad2 = "{\n  \"message\": [\n    {\n      \"id\": \"{delta, plural, =1{1 minute} other{# minutes}\",\n      \"message\": \"{delta, plural, =1{1 minuto} other{# minutos}\"\n    },\n    {\n      \"id\": \"{delta, plural, =1{1 second} other{# seconds}\",\n      \"message\": \"{delta, plural, =1{1 segundo} other{# segundos}\"\n    },\n    {\n      \"id\": \"{nFormatted} B\",\n      \"message\": \"{nFormatted} B\"\n    },\n    {\n      \"id\": \"{nFormatted} KiB\",\n      \"message\": \"{nFormatted} KiB\"\n    },\n    {\n      \"id\": \"{nFormatted} MiB\",\n      \"message\": \"{nFormatted} MiB\"\n    }\n  ],\n  \"error\": null\n}";
-//
-//        json_decode($cad1);
-//        json_decode($cad2);
+//        $cad1 = "\n{\"message\": [\n    {\"id\": 2641, \"message\": \"{nFormatted} KiB\"},\n    {\"id\": 2642, \"message\": \"{nFormatted} MiB\"},\n    {\"id\": 2643, \"message\": \"{nFormatted} GiB\"}\n], \"error\": null}\n";
+//        $cad2 = "\n{\n  \"message\": [\n    {\"id\": 2641, \"message\": \"{nFormatted} KiB\"},\n    {\"id\": 2642, \"message\": \"{nFormatted} MiB\"},\n    {\"id\": 2643, \"message\": \"{nFormatted} GiB\"}\n  ],\n  \"error\": null\n}\n";
 //
 //        return [
 //            'cad1' => json_decode($cad1),
@@ -66,6 +68,7 @@ class OpenAi implements TranslationEngine
             $response = OpenAi::getTranslation($loopElements, $source, $target);
 
 //            foreach ($response as $value) {
+
 //                $languageTranslate = LanguageTranslate::findOne(['id' => $value['id'], 'language' => $target]) ?:
 //                    new LanguageTranslate(['id' => $value['id'], 'language' => $target]);
 //
@@ -83,15 +86,12 @@ class OpenAi implements TranslationEngine
 //                    ];
 //                }
 //            }
-//            return [
-//                'primeros_500_traducidos' => $response,
-//                'count' => $countChartsToIa
-//            ];
 
             return [
                 'status' => 'success',
                 'translated_string' => $loop,
                 'response' => $response,
+//                'response2' => json_decode($response, true),
             ];
         } else {
             return [
