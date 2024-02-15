@@ -23,8 +23,6 @@ class LanguageSelectorWidget extends Widget
 
     public function run()
     {
-        phpinfo();
-        exit;
         // Registra los assets del widget
 //        LanguageSelectorAsset::register($this->view);
 

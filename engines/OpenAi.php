@@ -49,15 +49,6 @@ class OpenAi implements TranslationEngine
     
     public static function getBulkTranslation($stringsToTranslate, $source = 'en-US', $target = 'es-ES')
     {
-
-//        $cad1 = "\n{\"message\": [\n    {\"id\": 2641, \"message\": \"{nFormatted} KiB\"},\n    {\"id\": 2642, \"message\": \"{nFormatted} MiB\"},\n    {\"id\": 2643, \"message\": \"{nFormatted} GiB\"}\n], \"error\": null}\n";
-//        $cad2 = "\n{\n  \"message\": [\n    {\"id\": 2641, \"message\": \"{nFormatted} KiB\"},\n    {\"id\": 2642, \"message\": \"{nFormatted} MiB\"},\n    {\"id\": 2643, \"message\": \"{nFormatted} GiB\"}\n  ],\n  \"error\": null\n}\n";
-//
-//        return [
-//            'cad1' => json_decode($cad1),
-//            'cad2' => json_decode($cad2),
-//        ];
-
         $loop = 5;
         $loopElements = array_slice($stringsToTranslate, 0, $loop); // Get first 500 elements from array
         $countChartsToIa = strlen(json_encode($loopElements)); // Get the length of the json string
