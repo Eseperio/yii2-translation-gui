@@ -2,9 +2,8 @@
 
 namespace eseperio\translatemanager\controllers\actions;
 
-use Yii;
-use yii\web\Response;
 use eseperio\translatemanager\models\LanguageSource;
+use Yii;
 
 /**
  * Deletes an existing LanguageSource model.
@@ -19,16 +18,24 @@ class DeleteSourceAction extends \yii\base\Action
      * Deletes an existing LanguageSource model.
      * If deletion is successful, the browser will be redirected to the 'list' page.
      *
-     * @return array
+     * @return \yii\web\Response
      */
     public function run()
     {
-        Yii::$app->response->format = Response::FORMAT_JSON;
 
+        $response = [
+            'success' => true,
+            'errors' => []
+        ];
         $ids = Yii::$app->request->post('ids');
 
-        LanguageSource::deleteAll(['id' => (array) $ids]);
+        $delted = LanguageSource::deleteAll(['id' => (array)$ids]);
+        if ($delted === false) {
+            $response['success'] = false;
+            $response['errors'][] = Yii::t('language', 'An error occured while deleting the sources');
+        }
+        return $this->controller->asJson($response);
 
-        return [];
+
     }
 }

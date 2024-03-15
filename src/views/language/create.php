@@ -14,6 +14,8 @@ $this->title = Yii::t('language', 'Create {modelClass}', [
 $this->params['breadcrumbs'][] = ['label' => Yii::t('language', 'Languages'), 'url' => ['list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php $this->beginContent('@eseperio/translatemanager/views/layouts/main.php'); ?>
+
 <div class="language-create">
 
     <?= $this->render('_form', [
@@ -21,3 +23,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+<?php $this->endContent(); ?>

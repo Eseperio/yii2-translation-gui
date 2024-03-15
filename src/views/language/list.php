@@ -20,6 +20,8 @@ $this->title = Yii::t('language', 'List of languages');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
+
+<?php $this->beginContent('@eseperio/translatemanager/views/layouts/main.php'); ?>
 <div id="languages">
 
     <?php
@@ -30,9 +32,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            'language_id',
-            'name_ascii',
+            [
+                'attribute' => 'name_ascii',
+                'format' => 'raw',
+                'value' => function ($language) {
+                    /* @var $language Language */
+                    $missing = $language->missingTranslationNb;
+                    $html = Html::tag('strong', $language->name_ascii) . ' ' . Html::tag('i', $language->language_id);
+
+                    if ($missing) {
+                        $html = Html::tag('i', '', [
+                                'class' => 'fa fa-exclamation-triangle text-danger',
+                                'title' => Yii::t('language', 'Missing {nb} translations', [
+                                    'nb' => $missing
+                                ]),
+                                'data-toggle' => 'tooltip',
+                            ]) . " " . $html;
+                    }
+                    return $html;
+                },
+            ],
             [
                 'format' => 'raw',
                 'filter' => Language::getStatusNames(),
@@ -40,14 +59,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filterInputOptions' => ['class' => 'form-control', 'id' => 'status'],
                 'label' => Yii::t('language', 'Status'),
                 'content' => function ($language) {
-                    return Html::activeDropDownList($language, 'status', Language::getStatusNames(), ['class' => 'status', 'id' => $language->language_id, 'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/change-status')]);
-                },
-            ],
-            [
-                'format' => 'raw',
-                'attribute' => Yii::t('language', 'Statistic'),
-                'content' => function ($language) {
-                    return '<span class="statistic"><span style="width:' . $language->gridStatistic . '%"></span><i>' . $language->gridStatistic . '%</i></span>';
+                    return Html::activeDropDownList($language, 'status', Language::getStatusNames(), [
+                        'class' => 'status form-control',
+                        'id' => $language->language_id,
+                        'data-url' => Yii::$app->urlManager->createUrl('/translatemanager/language/change-status')
+                    ]);
                 },
             ],
             [
@@ -71,57 +87,5 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
     Pjax::end();
     ?>
-
-    <?php
-    yii\bootstrap\Modal::begin([
-        'header' => '<h2>'. Yii::t('language', 'Translate the entire language '). '<span id="modal_languaje_id"></span></h2>',
-        'id' => 'bulk-translation-modal',
-        'size' => 'modal-md',
-    ]);
-    ?>
-
-    <?php
-    $css = <<<CSS
-    /* Aquí va tu código CSS */
-    span#loadingSpinner {
-        display: none;
-    }
-    
-    span#loadingSpinner i::before {
-        font-weight: 600;
-        color: #e30057;
-        font-size: 15px;
-    }
-    CSS;
-    $this->registerCss($css);
-    ?>
-
-    <div id="bulk-translation-content">
-        <div class="row">
-            <div class="col-md-8"><?= Yii::t('language','The number of characters to be translated is ')?></div>
-            <div class="col-md-4" id="modal_total_charts"></div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-8"><?= Yii::t('language','The total number of strings to be translated is ')?></div>
-            <div class="col-md-4"><span id="modal_translated"></span> / <span id="modal_total_translations"></span></div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <div><?= Yii::t('language', 'Are you sure you can translate the whole language?')?></div>
-            </div>
-        </div>
-        <br>
-        <?php
-            echo Html::button('Confirm translation', ['type' => 'button', 'class' => 'btn btn-sm btn-primary', 'data-url' => '/manager/translatemanager/language/bulk-auto-translate', 'id' => 'bulk-translation-confirm']);
-        ?>
-        <span id="loadingSpinner">
-            <i class="fal fa-spinner fa-spin"></i>
-        </span>
-    </div>
-
-    <?php
-    yii\bootstrap\Modal::end();
-    ?>
 </div>
+<?php $this->endContent(); ?>
