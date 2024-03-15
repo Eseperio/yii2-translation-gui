@@ -29,7 +29,7 @@ Please read and follow the instructions in the [Contributing guide](CONTRIBUTING
 Via [Composer](http://getcomposer.org/download/)
 
 ```
-composer require lajax/yii2-translate-manager
+composer require eseperio/yii2-translation-gui
 ```
 
 ### Migration
@@ -38,20 +38,6 @@ Run the following command in Terminal for database migration:
 
 ```
 yii migrate/up --migrationPath=@vendor/lajax/yii2-translate-manager/migrations
-```
-
-Or use the [namespaced migration](http://www.yiiframework.com/doc-2.0/guide-db-migrations.html#namespaced-migrations) (requires at least Yii 2.0.10):
-
-```php
-// Add namespace to console config:
-'controllerMap' => [
-    'migrate' => [
-        'class' => 'yii\console\controllers\MigrateController',
-        'migrationNamespaces' => [
-            'lajax\translatemanager\migrations\namespaced',
-        ],
-    ],
-],
 ```
 
 Then run:
