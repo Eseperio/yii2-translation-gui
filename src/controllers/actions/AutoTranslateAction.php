@@ -17,7 +17,7 @@ class AutoTranslateAction extends Action
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $id = Yii::$app->request->post('id', 0);
-        $languageSource = 'en-US'; //TODO: get from config
+        $languageSource = Yii::$app->sourceLanguage;
         $languageId = Yii::$app->request->post('language_id', Yii::$app->language);
         $languageTranslate = LanguageTranslate::findOne(['id' => $id, 'language' => $languageId]) ?:
             new LanguageTranslate(['id' => $id, 'language' => $languageId]);

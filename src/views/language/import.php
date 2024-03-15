@@ -10,6 +10,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('language', 'Import');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php $this->beginContent('@eseperio/translatemanager/views/layouts/main.php'); ?>
 
 <div class="language-export col-sm-6">
 
@@ -28,3 +29,4 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php $this->endContent(); ?>

@@ -2,10 +2,9 @@
 
 namespace eseperio\translatemanager\controllers\actions;
 
-use yii\data\ArrayDataProvider;
-use eseperio\translatemanager\services\Scanner;
 use eseperio\translatemanager\models\LanguageSource;
-use eseperio\translatemanager\bundles\ScanPluginAsset;
+use eseperio\translatemanager\services\Scanner;
+use yii\data\ArrayDataProvider;
 
 /**
  * Class for detecting language elements.
@@ -21,7 +20,6 @@ class ScanAction extends \yii\base\Action
      */
     public function init()
     {
-        ScanPluginAsset::register($this->controller->view);
         parent::init();
     }
 

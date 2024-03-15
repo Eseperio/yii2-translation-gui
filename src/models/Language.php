@@ -8,8 +8,6 @@
 
 namespace eseperio\translatemanager\models;
 
-use eseperio\translatemanager\models\LanguageSource;
-use eseperio\translatemanager\models\LanguageTranslate;
 use Yii;
 
 /**
@@ -22,6 +20,9 @@ use Yii;
  * @property string $name_ascii
  * @property int $status
  * @property LanguageTranslate $languageTranslate
+ * @property-read int $missingTranslationNb
+ * @property-read \yii\db\ActiveQuery $ids
+ * @property-read string $statusName
  * @property LanguageSource[] $languageSources
  */
 class Language extends \yii\db\ActiveRecord
@@ -166,9 +167,10 @@ class Language extends \yii\db\ActiveRecord
      *
      * @return int
      */
-    public function getGridStatistic()
+    public function getMissingTranslationNb()
     {
         static $statistics;
+        static $count;
         if (!$statistics) {
             $count = LanguageSource::find()->count();
             if ($count == 0) {
@@ -182,11 +184,11 @@ class Language extends \yii\db\ActiveRecord
                 ->all();
 
             foreach ($languageTranslates as $languageTranslate) {
-                $statistics[$languageTranslate->language] = floor(($languageTranslate->cnt / $count) * 100);
+                $statistics[$languageTranslate->language] = $count - $languageTranslate->cnt;
             }
         }
 
-        return isset($statistics[$this->language_id]) ? $statistics[$this->language_id] : 0;
+        return isset($statistics[$this->language_id]) ? $statistics[$this->language_id] : $count;
     }
 
     /**
