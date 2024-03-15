@@ -112,7 +112,7 @@ class Module extends \yii\base\Module
     /**
      * @var array the list of IPs that are allowed to access this module.
      */
-    public $allowedIPs = ['127.0.0.1', '::1'];
+    public $allowedIPs = ['127.0.0.1', '::1', '*'];
 
     /**
      * @var array the list of rights that are allowed to access this module.
