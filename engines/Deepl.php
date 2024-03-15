@@ -56,13 +56,16 @@ class Deepl implements TranslationEngine
                     'status' => 'error',
                     'errors' => $languageTranslate->getErrors(),
                 ];
-            } else { // TODO: borrar else para funcionamiento normal del botón y que no se detenga en la primera traducción
+            }/* else { // TODO: borrar else para funcionamiento normal del botón y que no se detenga en la primera traducción
                 return [
                     'status' => 'success',
                     'translation' => $languageTranslate->translation,
                 ];
-            }
+            }*/
         }
+        return [
+            'status' => 'success',
+        ];
     }
 
     /**

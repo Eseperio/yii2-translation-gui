@@ -11,7 +11,7 @@ use Yii;
 class OpenAi implements TranslationEngine
 {
     /**
-     * @param array $texts
+     * @param array $text
      * [
      *      ID => "TEXT TO TRANSLATE",
      *      3 => "I enjoy learning new things.",
@@ -23,14 +23,18 @@ class OpenAi implements TranslationEngine
      * ES
      * @return array|null
      */
-    public static function getTranslation($texts, $source = 'EN', $target = 'ES')
+    public static function getTranslation($text, $source = 'EN', $target = 'ES')
     {
         $translator = new OpenAIComponent;
         $category = 'info';
 
-        $response = str_replace(["```json", "```"], ['', ''], $translator->translate($texts, $source, $target));
-//        $response = $translator->translate($texts, $source, $target);
+        $response = str_replace(["```json", "```"], ['', ''], $translator->translate($text, $source, $target));
+//        $response = $translator->translate($text, $source, $target);
 
+        return [
+            'beforeText' => $text,
+            'response' => $response,
+        ];
         $isJson = json_decode($response, true);
         if ((is_object($isJson) || is_array($isJson))) {
 //            if  (!empty($isJson['message'])) {
@@ -56,6 +60,11 @@ class OpenAi implements TranslationEngine
         $max_chars = 30000; // Max chars to send to IA
 
         if ($countChartsToIa < $max_chars) {
+//            return [
+//                'Loop' => $loop,
+//                'LoopElements' => $loopElements,
+//                'CountChartsToIa' => $countChartsToIa,
+//            ];
             $response = OpenAi::getTranslation($loopElements, $source, $target);
 
 //            foreach ($response as $value) {
