@@ -15,7 +15,7 @@ use Yii;
  * 'component' => [
  *      'translatemanager' => [
  *          'class' => 'eseperio\translatemanager\Component'
- *      ]
+ *      ]Fi
  * ]
  * ~~~
  *
