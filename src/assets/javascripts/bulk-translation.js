@@ -56,17 +56,17 @@ var translate = (function () {
             success: function (response) {
                 console.log(response);
 
-                var sCount = $("#modal_translated").text();
-                if (!isNaN(parseInt(sCount))) {
-                    sCount = parseInt(sCount) + parseInt(response.translated_string);
-                    console.log(sCount + ' + ' + response.translated_string);
-                } else {
-                    sCount = parseInt(response.translated_string);
-                }
-                $("#modal_translated").html(sCount);
+                // var sCount = $("#modal_translated").text();
+                // if (!isNaN(parseInt(sCount))) {
+                //     sCount = parseInt(sCount) + parseInt(response.translated_string);
+                //     console.log(sCount + ' + ' + response.translated_string);
+                // } else {
+                //     sCount = parseInt(response.translated_string);
+                // }
+                // $("#modal_translated").html(sCount);
 
                 $("#loadingSpinner").hide();
-                // $("#bulk-translation-content").html('success');
+                $("#bulk-translation-content").html('success');
 
                 // if (sCount < 40) {
                 //     setTimeout(
@@ -77,7 +77,7 @@ var translate = (function () {
             error: function (xhr, textStatus, errorThrown) {
                 console.log("Error to translate bulk content:", errorThrown);
                 $("#loadingSpinner").hide();
-                // $("#bulk-translation-content").html('error');
+                $("#bulk-translation-content").html('error');
             }
         });
     }
