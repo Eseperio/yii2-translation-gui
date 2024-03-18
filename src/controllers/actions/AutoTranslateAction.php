@@ -23,7 +23,7 @@ class AutoTranslateAction extends Action
             new LanguageTranslate(['id' => $id, 'language' => $languageId]);
         $languageTranslate->translation = '';
         if (Yii::$app->request->post('auto_translate', '') === 'true'){
-            $languageTranslate->translation = OpenAi::getTranslation(
+            $languageTranslate->translation = Deepl::getTranslation(
                 Yii::$app->request->post('source', ''),
                 $this->getLangISO($languageSource), $this->getLangISO($languageId)
             );
