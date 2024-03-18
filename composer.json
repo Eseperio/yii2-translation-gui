@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "eseperio\\translatemanager\\": "./src/"
+            "eseperio\\translatemanager\\": "src/"
         }
     },
     "scripts": {
