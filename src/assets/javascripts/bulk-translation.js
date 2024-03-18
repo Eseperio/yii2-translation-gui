@@ -27,6 +27,7 @@ var translate = (function () {
             dataType: 'json',
             data: data,
             success: function (response) {
+                console.log('prb: ', response);
                 $("#modal_languaje_id").html(data.language_id);
                 $("#bulk-translation-confirm").attr('data-id', data.language_id);
                 $("#modal_total_charts").html(response.totalCharts);

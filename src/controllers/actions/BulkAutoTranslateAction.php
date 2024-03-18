@@ -54,7 +54,7 @@ class BulkAutoTranslateAction extends Action
             ->all();
 
         if ($action === 'translateLanguage') { // Return translated strings
-            $response = OpenAi::getBulkTranslation($stringsToTranslate, $languageSource , $languageId);
+            $response = Deepl::getBulkTranslation($stringsToTranslate, $languageSource , $languageId);
             
             return $response;
         } else if ($action == 'getModalContent') { // Return total chars to translate

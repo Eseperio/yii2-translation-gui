@@ -87,5 +87,50 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
     Pjax::end();
     ?>
+
+
+<!--    $("#modal_languaje_id").html(data.language_id);-->
+<!--    $("#bulk-translation-confirm").attr('data-id', data.language_id);-->
+<!--    $("#modal_total_charts").html(response.totalCharts);-->
+<!--    $("#modal_total_translations").html(response.totalTranslations);-->
+
+<!--    Create modal object with title, 1 p and 2 buttons-->
+    <div class="modal fade" id="bulk-translation-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="bulk-translation-modal-label" style="display: inline-block;">
+                        <?php Yii::t('language', 'Bulk translation') ?>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <!--    $("#modal_languaje_id").html(data.language_id);-->
+                    <!--    $("#bulk-translation-confirm").attr('data-id', data.language_id);-->
+                    <!--    $("#modal_total_charts").html(response.totalCharts);-->
+                    <!--    $("#modal_total_translations").html(response.totalTranslations);-->
+                    <p>
+                        <?php Yii::t('language', 'Language to translate') ?>
+                        <span id="modal_languaje_id"></span>
+                    </p>
+                    <p>
+                        <?php Yii::t('language', 'Total charts') ?>
+                        <span id="modal_total_charts"></span>
+                    </p>
+                    <p>
+                        <?php Yii::t('language', 'Total translations') ?>
+                        <span id="modal_total_translations"></span>
+                    </p>
+                    <button id="bulk-translation-confirm" class="btn btn-primary" data-id="1"
+                            data-url="/manager/translatemanager/language/bulk-auto-translate"
+                            title="Bulk language translation">Bulk translation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <?php $this->endContent(); ?>
