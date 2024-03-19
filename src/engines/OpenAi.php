@@ -28,13 +28,15 @@ class OpenAi implements TranslationEngine
         $translator = new OpenAIComponent;
         $category = 'info';
 
+        return [
+            'beforeText' => $text,
+            'response' => $translator->translate($text, $source, $target),
+        ];
+
         $response = str_replace(["```json", "```"], ['', ''], $translator->translate($text, $source, $target));
 //        $response = $translator->translate($text, $source, $target);
 
-        return [
-            'beforeText' => $text,
-            'response' => $response,
-        ];
+
         $isJson = json_decode($response, true);
         if ((is_object($isJson) || is_array($isJson))) {
 //            if  (!empty($isJson['message'])) {
