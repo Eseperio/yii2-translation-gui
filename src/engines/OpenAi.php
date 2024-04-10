@@ -36,7 +36,6 @@ class OpenAi implements TranslationEngine
         $response = str_replace(["```json", "```"], ['', ''], $translator->translate($text, $source, $target));
 //        $response = $translator->translate($text, $source, $target);
 
-
         $isJson = json_decode($response, true);
         if ((is_object($isJson) || is_array($isJson))) {
 //            if  (!empty($isJson['message'])) {

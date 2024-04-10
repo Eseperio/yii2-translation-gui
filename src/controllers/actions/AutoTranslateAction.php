@@ -28,6 +28,7 @@ class AutoTranslateAction extends Action
                 $this->getLangISO($languageSource), $this->getLangISO($languageId)
             );
         }
+//        return $languageTranslate->translation;
 
         if ($languageTranslate->validate() && $languageTranslate->save()) {
             $generator = new Generator($this->controller->module, $languageId);
