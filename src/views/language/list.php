@@ -94,19 +94,24 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="bulk-translation-modal-label" style="display: inline-block;">
-                        ¿Traducir lenguaje de forma masiva?
+                        <?= Yii::t('language', 'Massive language translation?')?>
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" id="bulk-translation-content">
-                    <p>Language to translate: <span id="modal_languaje_id"></span></p>
-                    <p>Total charts: <span id="modal_total_charts"></span></p>
-                    <p>Total translations: <span id="modal_total_translations"></span></p>
+                    <p><?= Yii::t('language', 'Language to translate: ')?>
+                        <span id="modal_languaje_id"></span></p>
+                    <p><?= Yii::t('language', 'Total charts:')?>
+                        <span id="modal_total_charts"></span></p>
+                    <p><?= Yii::t('language', 'Total translations:')?>
+                        <span id="modal_total_translations"></span></p>
                     <button id="bulk-translation-confirm" class="btn btn-primary" data-id="1"
                             data-url="/manager/translatemanager/language/bulk-auto-translate"
-                            title="Bulk language translation">Bulk translation</button>
+                            title="Bulk language translation">
+                        <?= Yii::t('language', 'Bulk translation:')?>
+                    </button>
                     <span id="loadingSpinner" hidden>
                         <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
                     </span>
