@@ -196,7 +196,7 @@ class Language extends \yii\db\ActiveRecord
      */
     public function getLanguageTranslate()
     {
-        return $this->hasOne(LanguageTranslate::className(), ['language' => 'language_id']);
+        return $this->hasOne(LanguageTranslate::class, ['language' => 'language_id']);
     }
 
     /**
@@ -206,7 +206,7 @@ class Language extends \yii\db\ActiveRecord
      */
     public function getIds()
     {
-        return $this->hasMany(LanguageSource::className(), ['id' => 'id'])
+        return $this->hasMany(LanguageSource::class, ['id' => 'id'])
             ->viaTable(LanguageTranslate::tableName(), ['language' => 'language_id']);
     }
 
@@ -215,7 +215,7 @@ class Language extends \yii\db\ActiveRecord
      */
     public function getLanguageSources()
     {
-        return $this->hasMany(LanguageSource::className(), ['id' => 'id'])
+        return $this->hasMany(LanguageSource::class, ['id' => 'id'])
             ->viaTable(LanguageTranslate::tableName(), ['language' => 'language_id']);
     }
 

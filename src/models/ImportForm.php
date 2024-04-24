@@ -230,7 +230,7 @@ class ImportForm extends Model
      */
     protected function throwInvalidModelException($model)
     {
-        $errorMessage = Yii::t('language', 'Invalid model "{model}":', ['model' => $model->className()]);
+        $errorMessage = Yii::t('language', 'Invalid model "{model}":', ['model' => $model->class]);
         foreach ($model->getErrors() as $attribute => $errors) {
             $errorMessage .= "\n $attribute: " . join(', ', $errors);
         }

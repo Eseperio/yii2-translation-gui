@@ -35,11 +35,11 @@ class ExportAction extends \yii\base\Action
 
             Yii::$app->response->formatters = [
                 Response::FORMAT_XML => [
-                    'class' => XmlResponseFormatter::className(),
+                    'class' => XmlResponseFormatter::class,
                     'rootTag' => 'translations',
                 ],
                 Response::FORMAT_JSON => [
-                    'class' => JsonResponseFormatter::className(),
+                    'class' => JsonResponseFormatter::class,
                 ],
             ];
 

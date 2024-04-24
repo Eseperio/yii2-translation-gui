@@ -28,7 +28,7 @@ use eseperio\translatemanager\models\LanguageTranslate;
  *
  * ~~~
  * [
- *      'class' => eseperio\translatemanager\behaviors\TranslateBehavior::className(),
+ *      'class' => eseperio\translatemanager\behaviors\TranslateBehavior::class,
  *      'translateAttributes' => ['names of multilingual fields'],
  * ],
  * ~~~
@@ -37,7 +37,7 @@ use eseperio\translatemanager\models\LanguageTranslate;
  *
  * ~~~
  * [
- *      'class' => eseperio\translatemanager\behaviors\TranslateBehavior::className(),
+ *      'class' => eseperio\translatemanager\behaviors\TranslateBehavior::class,
  *      'translateAttributes' => ['names of multilingual fields'],
  *      'category' => static::tableName(),
  * ],
